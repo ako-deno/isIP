@@ -38,7 +38,7 @@ isIP("2001:0db8:85a3:0000:0000:8a2e:0370"); // 0
 
   Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses. It should be compatible with Node.js' [net.isIP](https://nodejs.org/dist/latest-v14.x/docs/api/net.html#net_net_isip_input).
 
-Any incompatibility, please check [net_isip_test.js](./test/net_isip_test.js)
+Any incompatibility, please check [net_isip_test.ts](./test/net_isip_test.ts)
 
 # License
 
