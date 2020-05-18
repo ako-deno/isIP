@@ -1,6 +1,6 @@
 # isIP
 
-[![tag](https://img.shields.io/github/tag/ako-deno/isIP.svg)](https://github.com/ako-deno/isIP)
+[![tag](https://img.shields.io/github/tag/ako-deno/isIP.svg)](https://github.com/ako-deno/isIP/tags)
 ![isIP-ci](https://github.com/ako-deno/isIP/workflows/isIP-ci/badge.svg)
 
 IP address detector for Deno.
