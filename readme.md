@@ -26,15 +26,15 @@ isIP("2001:0db8:85a3:0000:0000:8a2e:0370"); // 0
 
 # API
 
-- isIPv4(input: string): boolean
+- **isIPv4(input: string): boolean**
 
   Returns true if input is a version 4 IP address, otherwise returns false. It should be compatible with Node.js' [net.isIPv4](https://nodejs.org/dist/latest-v14.x/docs/api/net.html#net_net_isipv4_input).
 
-- isIPv6(input: string): boolean
+- **isIPv6(input: string): boolean**
   
   Returns true if input is a version 6 IP address, otherwise returns false. It should be compatible with Node.js' [net.isIPv6](https://nodejs.org/dist/latest-v14.x/docs/api/net.html#net_net_isipv6_input).
 
-- isIP(input: string): number
+- **isIP(input: string): number**
 
   Tests if input is an IP address. Returns 0 for invalid strings, returns 4 for IP version 4 addresses, and returns 6 for IP version 6 addresses. It should be compatible with Node.js' [net.isIP](https://nodejs.org/dist/latest-v14.x/docs/api/net.html#net_net_isip_input).
 
