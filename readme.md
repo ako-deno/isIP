@@ -8,7 +8,7 @@ IP address detector for Deno.
 # Usage
 
 ```javascript
-import { isIPv4, isIPv6, isIP } from "../mod.ts";
+import { isIPv4, isIPv6, isIP } from "https://raw.githubusercontent.com/ako-deno/isIP/master/mod.ts";
 
 isIPv4("192.168.0.2"); // true
 isIPv4("168.0.2"); // false
