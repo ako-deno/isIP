@@ -24,44 +24,48 @@ import {
 } from "https://deno.land/std/testing/asserts.ts";
 import { isIP, isIPv4, isIPv6 } from "../mod.ts";
 
-assertStrictEq(isIP("127.0.0.1"), 4);
-assertStrictEq(isIP("x127.0.0.1"), 0);
-assertStrictEq(isIP("example.com"), 0);
-assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000"), 6);
-assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000::0000"), 0);
-assertStrictEq(isIP("1050:0:0:0:5:600:300c:326b"), 6);
-assertStrictEq(isIP("2001:252:0:1::2008:6"), 6);
-assertStrictEq(isIP("2001:dead:beef:1::2008:6"), 6);
-assertStrictEq(isIP("2001::"), 6);
-assertStrictEq(isIP("2001:dead::"), 6);
-assertStrictEq(isIP("2001:dead:beef::"), 6);
-assertStrictEq(isIP("2001:dead:beef:1::"), 6);
-assertStrictEq(isIP("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"), 6);
-assertStrictEq(isIP(":2001:252:0:1::2008:6:"), 0);
-assertStrictEq(isIP(":2001:252:0:1::2008:6"), 0);
-assertStrictEq(isIP("2001:252:0:1::2008:6:"), 0);
-assertStrictEq(isIP("2001:252::1::2008:6"), 0);
-assertStrictEq(isIP("::2001:252:1:2008:6"), 6);
-// Todo, known issues
-// assertStrictEq(isIP("::2001:252:1:1.1.1.1"), 6);
-// assertStrictEq(isIP("::2001:252:1:255.255.255.255"), 6);
-assertStrictEq(isIP("::2001:252:1:255.255.255.255.76"), 0);
-assertStrictEq(isIP("::anything"), 0);
-assertStrictEq(isIP("::1"), 6);
-assertStrictEq(isIP("::"), 6);
-assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:12345:0000"), 0);
-assertStrictEq(isIP("0"), 0);
-assertStrictEq(isIP(""), 0);
+const { test } = Deno;
 
-assertStrictEq(isIPv4("127.0.0.1"), true);
-assertStrictEq(isIPv4("example.com"), false);
-assertStrictEq(isIPv4("2001:252:0:1::2008:6"), false);
-assertStrictEq(isIPv4(""), false);
+test("Node.js compatible test", () => {
+  assertStrictEq(isIP("127.0.0.1"), 4);
+  assertStrictEq(isIP("x127.0.0.1"), 0);
+  assertStrictEq(isIP("example.com"), 0);
+  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000"), 6);
+  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000::0000"), 0);
+  assertStrictEq(isIP("1050:0:0:0:5:600:300c:326b"), 6);
+  assertStrictEq(isIP("2001:252:0:1::2008:6"), 6);
+  assertStrictEq(isIP("2001:dead:beef:1::2008:6"), 6);
+  assertStrictEq(isIP("2001::"), 6);
+  assertStrictEq(isIP("2001:dead::"), 6);
+  assertStrictEq(isIP("2001:dead:beef::"), 6);
+  assertStrictEq(isIP("2001:dead:beef:1::"), 6);
+  assertStrictEq(isIP("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"), 6);
+  assertStrictEq(isIP(":2001:252:0:1::2008:6:"), 0);
+  assertStrictEq(isIP(":2001:252:0:1::2008:6"), 0);
+  assertStrictEq(isIP("2001:252:0:1::2008:6:"), 0);
+  assertStrictEq(isIP("2001:252::1::2008:6"), 0);
+  assertStrictEq(isIP("::2001:252:1:2008:6"), 6);
+  // Todo, known issues
+  // assertStrictEq(isIP("::2001:252:1:1.1.1.1"), 6);
+  // assertStrictEq(isIP("::2001:252:1:255.255.255.255"), 6);
+  assertStrictEq(isIP("::2001:252:1:255.255.255.255.76"), 0);
+  assertStrictEq(isIP("::anything"), 0);
+  assertStrictEq(isIP("::1"), 6);
+  assertStrictEq(isIP("::"), 6);
+  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:12345:0000"), 0);
+  assertStrictEq(isIP("0"), 0);
+  assertStrictEq(isIP(""), 0);
 
-assertStrictEq(isIPv6("127.0.0.1"), false);
-assertStrictEq(isIPv6("example.com"), false);
-assertStrictEq(isIPv6("2001:252:0:1::2008:6"), true);
-assertStrictEq(isIPv6(""), false);
+  assertStrictEq(isIPv4("127.0.0.1"), true);
+  assertStrictEq(isIPv4("example.com"), false);
+  assertStrictEq(isIPv4("2001:252:0:1::2008:6"), false);
+  assertStrictEq(isIPv4(""), false);
+
+  assertStrictEq(isIPv6("127.0.0.1"), false);
+  assertStrictEq(isIPv6("example.com"), false);
+  assertStrictEq(isIPv6("2001:252:0:1::2008:6"), true);
+  assertStrictEq(isIPv6(""), false);
+});
 
 // The following cases are not going to be supported.
 
