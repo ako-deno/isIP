@@ -2,6 +2,7 @@
 
 [![tag](https://img.shields.io/github/tag/ako-deno/isIP.svg)](https://github.com/ako-deno/isIP/tags)
 ![isIP-ci](https://github.com/ako-deno/isIP/workflows/isIP-ci/badge.svg)
+[![HitCount](http://hits.dwyl.com/ako-deno/isIP.svg)](http://hits.dwyl.com/ako-deno/isIP)
 
 IP address detector for Deno.
 
