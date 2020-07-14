@@ -1,7 +1,7 @@
 import {
   assert,
   assertEquals,
-} from "https://deno.land/std/testing/asserts.ts";
+} from "./deps.ts";
 import { isIP, isIPv4, isIPv6 } from "../mod.ts";
 
 const { test } = Deno;

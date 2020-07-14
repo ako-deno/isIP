@@ -20,82 +20,82 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import {
-  assertStrictEq,
-} from "https://deno.land/std/testing/asserts.ts";
+  assertStrictEquals,
+} from "./deps.ts";
 import { isIP, isIPv4, isIPv6 } from "../mod.ts";
 
 const { test } = Deno;
 
 test("Node.js compatible test", () => {
-  assertStrictEq(isIP("127.0.0.1"), 4);
-  assertStrictEq(isIP("x127.0.0.1"), 0);
-  assertStrictEq(isIP("example.com"), 0);
-  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000"), 6);
-  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:0000:0000::0000"), 0);
-  assertStrictEq(isIP("1050:0:0:0:5:600:300c:326b"), 6);
-  assertStrictEq(isIP("2001:252:0:1::2008:6"), 6);
-  assertStrictEq(isIP("2001:dead:beef:1::2008:6"), 6);
-  assertStrictEq(isIP("2001::"), 6);
-  assertStrictEq(isIP("2001:dead::"), 6);
-  assertStrictEq(isIP("2001:dead:beef::"), 6);
-  assertStrictEq(isIP("2001:dead:beef:1::"), 6);
-  assertStrictEq(isIP("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"), 6);
-  assertStrictEq(isIP(":2001:252:0:1::2008:6:"), 0);
-  assertStrictEq(isIP(":2001:252:0:1::2008:6"), 0);
-  assertStrictEq(isIP("2001:252:0:1::2008:6:"), 0);
-  assertStrictEq(isIP("2001:252::1::2008:6"), 0);
-  assertStrictEq(isIP("::2001:252:1:2008:6"), 6);
+  assertStrictEquals(isIP("127.0.0.1"), 4);
+  assertStrictEquals(isIP("x127.0.0.1"), 0);
+  assertStrictEquals(isIP("example.com"), 0);
+  assertStrictEquals(isIP("0000:0000:0000:0000:0000:0000:0000:0000"), 6);
+  assertStrictEquals(isIP("0000:0000:0000:0000:0000:0000:0000:0000::0000"), 0);
+  assertStrictEquals(isIP("1050:0:0:0:5:600:300c:326b"), 6);
+  assertStrictEquals(isIP("2001:252:0:1::2008:6"), 6);
+  assertStrictEquals(isIP("2001:dead:beef:1::2008:6"), 6);
+  assertStrictEquals(isIP("2001::"), 6);
+  assertStrictEquals(isIP("2001:dead::"), 6);
+  assertStrictEquals(isIP("2001:dead:beef::"), 6);
+  assertStrictEquals(isIP("2001:dead:beef:1::"), 6);
+  assertStrictEquals(isIP("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff"), 6);
+  assertStrictEquals(isIP(":2001:252:0:1::2008:6:"), 0);
+  assertStrictEquals(isIP(":2001:252:0:1::2008:6"), 0);
+  assertStrictEquals(isIP("2001:252:0:1::2008:6:"), 0);
+  assertStrictEquals(isIP("2001:252::1::2008:6"), 0);
+  assertStrictEquals(isIP("::2001:252:1:2008:6"), 6);
   // Todo, known issues
-  // assertStrictEq(isIP("::2001:252:1:1.1.1.1"), 6);
-  // assertStrictEq(isIP("::2001:252:1:255.255.255.255"), 6);
-  assertStrictEq(isIP("::2001:252:1:255.255.255.255.76"), 0);
-  assertStrictEq(isIP("::anything"), 0);
-  assertStrictEq(isIP("::1"), 6);
-  assertStrictEq(isIP("::"), 6);
-  assertStrictEq(isIP("0000:0000:0000:0000:0000:0000:12345:0000"), 0);
-  assertStrictEq(isIP("0"), 0);
-  assertStrictEq(isIP(""), 0);
+  // assertStrictEquals(isIP("::2001:252:1:1.1.1.1"), 6);
+  // assertStrictEquals(isIP("::2001:252:1:255.255.255.255"), 6);
+  assertStrictEquals(isIP("::2001:252:1:255.255.255.255.76"), 0);
+  assertStrictEquals(isIP("::anything"), 0);
+  assertStrictEquals(isIP("::1"), 6);
+  assertStrictEquals(isIP("::"), 6);
+  assertStrictEquals(isIP("0000:0000:0000:0000:0000:0000:12345:0000"), 0);
+  assertStrictEquals(isIP("0"), 0);
+  assertStrictEquals(isIP(""), 0);
 
-  assertStrictEq(isIPv4("127.0.0.1"), true);
-  assertStrictEq(isIPv4("example.com"), false);
-  assertStrictEq(isIPv4("2001:252:0:1::2008:6"), false);
-  assertStrictEq(isIPv4(""), false);
+  assertStrictEquals(isIPv4("127.0.0.1"), true);
+  assertStrictEquals(isIPv4("example.com"), false);
+  assertStrictEquals(isIPv4("2001:252:0:1::2008:6"), false);
+  assertStrictEquals(isIPv4(""), false);
 
-  assertStrictEq(isIPv6("127.0.0.1"), false);
-  assertStrictEq(isIPv6("example.com"), false);
-  assertStrictEq(isIPv6("2001:252:0:1::2008:6"), true);
-  assertStrictEq(isIPv6(""), false);
+  assertStrictEquals(isIPv6("127.0.0.1"), false);
+  assertStrictEquals(isIPv6("example.com"), false);
+  assertStrictEquals(isIPv6("2001:252:0:1::2008:6"), true);
+  assertStrictEquals(isIPv6(""), false);
 });
 
 // The following cases are not going to be supported.
 
-// assertStrictEq(isIP(), 0);
-// assertStrictEq(isIP(null), 0);
-// assertStrictEq(isIP(123), 0);
-// assertStrictEq(isIP(true), 0);
-// assertStrictEq(isIP({}), 0);
-// assertStrictEq(isIP({ toString: () => '::2001:252:1:255.255.255.255' }), 6);
-// assertStrictEq(isIP({ toString: () => '127.0.0.1' }), 4);
-// assertStrictEq(isIP({ toString: () => 'bla' }), 0);
+// assertStrictEquals(isIP(), 0);
+// assertStrictEquals(isIP(null), 0);
+// assertStrictEquals(isIP(123), 0);
+// assertStrictEquals(isIP(true), 0);
+// assertStrictEquals(isIP({}), 0);
+// assertStrictEquals(isIP({ toString: () => '::2001:252:1:255.255.255.255' }), 6);
+// assertStrictEquals(isIP({ toString: () => '127.0.0.1' }), 4);
+// assertStrictEquals(isIP({ toString: () => 'bla' }), 0);
 
-// assertStrictEq(isIPv4(), false);
-// assertStrictEq(isIPv4(null), false);
-// assertStrictEq(isIPv4(123), false);
-// assertStrictEq(isIPv4(true), false);
-// assertStrictEq(isIPv4({}), false);
-// assertStrictEq(isIPv4({
+// assertStrictEquals(isIPv4(), false);
+// assertStrictEquals(isIPv4(null), false);
+// assertStrictEquals(isIPv4(123), false);
+// assertStrictEquals(isIPv4(true), false);
+// assertStrictEquals(isIPv4({}), false);
+// assertStrictEquals(isIPv4({
 //   toString: () => '::2001:252:1:255.255.255.255'
 // }), false);
-// assertStrictEq(isIPv4({ toString: () => '127.0.0.1' }), true);
-// assertStrictEq(isIPv4({ toString: () => 'bla' }), false);
+// assertStrictEquals(isIPv4({ toString: () => '127.0.0.1' }), true);
+// assertStrictEquals(isIPv4({ toString: () => 'bla' }), false);
 
-// assertStrictEq(isIPv6(), false);
-// assertStrictEq(isIPv6(null), false);
-// assertStrictEq(isIPv6(123), false);
-// assertStrictEq(isIPv6(true), false);
-// assertStrictEq(isIPv6({}), false);
-// assertStrictEq(isIPv6({
+// assertStrictEquals(isIPv6(), false);
+// assertStrictEquals(isIPv6(null), false);
+// assertStrictEquals(isIPv6(123), false);
+// assertStrictEquals(isIPv6(true), false);
+// assertStrictEquals(isIPv6({}), false);
+// assertStrictEquals(isIPv6({
 //   toString: () => '::2001:252:1:255.255.255.255'
 // }), true);
-// assertStrictEq(isIPv6({ toString: () => '127.0.0.1' }), false);
-// assertStrictEq(isIPv6({ toString: () => 'bla' }), false);
+// assertStrictEquals(isIPv6({ toString: () => '127.0.0.1' }), false);
+// assertStrictEquals(isIPv6({ toString: () => 'bla' }), false);
